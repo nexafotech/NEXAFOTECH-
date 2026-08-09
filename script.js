@@ -116,12 +116,12 @@ sections.forEach(sec => {
             {
                 scrollTrigger: {
                     trigger: sec,
-                    start: "top 75%",
+                    start: "top 90%",
                 },
                 opacity: 1,
                 y: 0,
                 duration: 0.8,
-                stagger: 0.15,
+                stagger: 0.08,
                 ease: "power3.out"
             }
         );
@@ -846,3 +846,6 @@ document.querySelectorAll('img[data-fallback]').forEach(img => {
         }
     }, { once: true });
 });
+
+window.addEventListener('load', () => { ScrollTrigger.refresh(); });
+
