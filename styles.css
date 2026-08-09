@@ -1582,36 +1582,35 @@ img { max-width: 100%; display: block; }
 @media (max-width: 768px) {
     .team-grid {
         flex-wrap: nowrap !important;
-        overflow-x: visible !important;
-        padding: 0 0.2rem 1rem !important;
-        gap: 0.2rem !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory !important;
+        padding: 0 0.5rem 1.5rem !important;
+        gap: 0.5rem !important;
+        justify-content: flex-start !important;
     }
+    .team-grid::-webkit-scrollbar { height: 6px; }
+    .team-grid::-webkit-scrollbar-thumb { background: rgba(255,81,35,0.5); border-radius: 4px; }
+    
     .team-card {
-        flex: 1 1 0 !important;
+        flex: 0 0 31% !important; /* 3 cards fit perfectly */
         min-width: 0 !important;
-        padding: 0.5rem 0.2rem !important;
-        border-radius: 0.5rem !important;
+        max-width: none !important;
+        scroll-snap-align: center !important;
+        padding: 1rem 0.5rem !important;
+        border-radius: 0.8rem !important;
     }
     .team-avatar {
-        width: 30px !important;
-        height: 30px !important;
-        margin-bottom: 0.2rem !important;
-        border-width: 1px !important;
+        width: 45px !important;
+        height: 45px !important;
+        margin-bottom: 0.5rem !important;
     }
     .team-name {
-        font-size: 0.45rem !important;
-        margin-bottom: 0.1rem !important;
+        font-size: 0.65rem !important;
         word-break: break-word !important;
+        line-height: 1.2 !important;
     }
-    .team-role {
-        font-size: 0.35rem !important;
-        margin-bottom: 0.1rem !important;
-    }
-    .team-qual {
-        font-size: 0.3rem !important;
-        margin-bottom: 0.2rem !important;
-    }
-    .team-desc {
-        display: none !important; /* Hide paragraph on mobile to fit 5 cards */
-    }
+    .team-role { font-size: 0.55rem !important; }
+    .team-qual { font-size: 0.5rem !important; }
+    .team-desc { display: none !important; }
 }
