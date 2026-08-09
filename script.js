@@ -160,21 +160,24 @@ gsap.to('.orb-container', {
     y: 200
 });
 
-// Services Image Parallax
-gsap.utils.toArray('.svc-slice').forEach(slice => {
-    const img = slice.querySelector('.svc-bg');
-    if (img) {
-        gsap.to(img, {
-            scrollTrigger: {
-                trigger: slice,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true
-            },
-            y: -100, // Move image up slightly as we scroll down
-            ease: "none"
-        });
-    }
+// Services Image Parallax (Desktop Only)
+let mm = gsap.matchMedia();
+mm.add("(min-width: 769px)", () => {
+    gsap.utils.toArray('.svc-slice').forEach(slice => {
+        const img = slice.querySelector('.svc-bg');
+        if (img) {
+            gsap.to(img, {
+                scrollTrigger: {
+                    trigger: slice,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
+                },
+                y: -100, // Move image up slightly as we scroll down
+                ease: "none"
+            });
+        }
+    });
 });
 
 // ── 3D Hero Perspective removed per request ──

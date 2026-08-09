@@ -8,15 +8,16 @@
     <link rel="icon" type="./image/png" href="./image/logo/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- GSAP & Lenis Setup -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/split-type"></script>
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.32/dist/lenis.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script defer src="https://unpkg.com/split-type"></script>
+    <script defer src="https://unpkg.com/@studio-freight/lenis@1.0.32/dist/lenis.min.js"></script>
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=19">
 
 </head>
 <body>
@@ -55,10 +56,7 @@
     <div class="hero-grid-lines"></div>
     <div class="hero-inner">
         <div class="hero-content" id="heroContent">
-            <div class="hero-eyebrow">
-                <span class="pulse"></span>
-                Engineering build with us
-            </div>
+
             <h1>Innovating<br><span class="accent">the</span> Future</h1>
             <p class="hero-sub">
                 We craft high-performance web experiences, robust software solutions, and cutting-edge applications to <strong>scale your business.</strong>
@@ -89,22 +87,34 @@
                 </div>
                 <div class="orb-slider" id="orbSlider">
                     <div class="orb-slide active">
-                        <img id="img-founder" src="./image/Founder-Chairman.png" alt="Founder & Chairman"
+                        <img id="img-founder" src="./image/imp_Image/Founder-Chairman.png" alt="Founder & Chairman"
                              fetchpriority="high" decoding="async"
                              onerror="this.src='https://ui-avatars.com/api/?name=Founder+Chairman&background=ff5123&color=fff&size=200'">
                         <div class="orb-slide-role">Founder & Chairman</div>
                     </div>
                     <div class="orb-slide">
-                        <img id="img-ceo" src="./image/CEO-Secretary-2.png" alt="Chief Executive Officer"
+                        <img id="img-ceo" src="./image/imp_Image/CEO-Secretary-2.png" alt="Chief Executive Officer"
                              loading="lazy" decoding="async"
                              onerror="this.src='https://ui-avatars.com/api/?name=CEO+Secretary&background=0ea5e9&color=fff&size=200'">
                         <div class="orb-slide-role">Chief Executive Officer</div>
                     </div>
                     <div class="orb-slide">
-                        <img id="img-md" src="./image/Md.png" alt="MD" style="object-position: top center;"
+                        <img id="img-md" src="./image/imp_Image/md.png" alt="MD"
                              loading="lazy" decoding="async"
                              onerror="this.src='https://ui-avatars.com/api/?name=Managing+Director&background=10b981&color=fff&size=200'">
                         <div class="orb-slide-role">Managing Director</div>
+                    </div>
+                    <div class="orb-slide">
+                        <img id="img-cto" src="./image/imp_Image/Chief%20Technology%20officer.png" alt="Chief Technology Officer"
+                             loading="lazy" decoding="async"
+                             onerror="this.src='https://ui-avatars.com/api/?name=Chief+Technology+Officer&background=8b5cf6&color=fff&size=200'">
+                        <div class="orb-slide-role">Chief Technology Officer</div>
+                    </div>
+                    <div class="orb-slide">
+                        <img id="img-coo" src="./image/imp_Image/Chief%20operation%20officer.png" alt="Chief Operating Officer"
+                             loading="lazy" decoding="async"
+                             onerror="this.src='https://ui-avatars.com/api/?name=Chief+Operating+Officer&background=eab308&color=fff&size=200'">
+                        <div class="orb-slide-role">Chief Operating Officer</div>
                     </div>
                 </div>
                 <!-- Floating particles -->
@@ -542,7 +552,7 @@
             <div class="team-card anim-fade">
                 <div class="card-accent" style="background:var(--primary);"></div>
                 <div class="team-avatar" style="border-color: rgba(255,81,35,0.35);">
-                    <img src="./image/Founder-Chairman.png" alt="Kirubanantham Senthil"
+                    <img src="./image/imp_Image/Founder-Chairman.png" alt="Kirubanantham Senthil"
                          onerror="this.src='https://ui-avatars.com/api/?name=Kirubanantham+Senthil&background=FF5123&color=fff&size=200'">
                 </div>
                 <h3 class="team-name">Kirubanantham Senthil</h3>
@@ -554,7 +564,7 @@
             <div class="team-card anim-fade">
                 <div class="card-accent" style="background:var(--accent);"></div>
                 <div class="team-avatar" style="border-color: rgba(14,165,233,0.35);">
-                    <img src="./image/CEO-Secretary-2.png" alt="Kavin Manivasagam"
+                    <img src="./image/imp_Image/CEO-Secretary-2.png" alt="Kavin Manivasagam"
                          onerror="this.src='https://ui-avatars.com/api/?name=Kavin+Manivasagam&background=0ea5e9&color=fff&size=200'">
                 </div>
                 <h3 class="team-name">Kavin Manivasagam</h3>
@@ -566,13 +576,37 @@
             <div class="team-card anim-fade">
                 <div class="card-accent" style="background:#10b981;"></div>
                 <div class="team-avatar" style="border-color: rgba(16, 185, 129, 0.35);">
-                    <img src="./image/Md.png" alt="Madhesh Krishnamoorthy" style="object-position: top center;"
+                    <img src="./image/imp_Image/md.png" alt="Madhesh Krishnamoorthy"
                          onerror="this.src='https://ui-avatars.com/api/?name=Madhesh+Krishnamoorthy&background=10b981&color=fff&size=200'">
                 </div>
                 <h3 class="team-name">Madhesh Krishnamoorthy</h3>
                 <p class="team-role" style="color:#10b981;">Managing Director</p>
                 <p class="team-qual">BE-CSE-Cyber Security</p>
                 <p class="team-desc">Leading with vision, empowering people, and building a company where innovation, trust, and long-term growth go hand in hand.</p>
+            </div>
+            <!-- Chief Technology Officer -->
+            <div class="team-card anim-fade">
+                <div class="card-accent" style="background:#8b5cf6;"></div>
+                <div class="team-avatar" style="border-color: rgba(139, 92, 246, 0.35);">
+                    <img src="./image/imp_Image/Chief%20Technology%20officer.png" alt="Rethish Sukumar"
+                         onerror="this.src='https://ui-avatars.com/api/?name=Rethish+Sukumar&background=8b5cf6&color=fff&size=200'">
+                </div>
+                <h3 class="team-name">Rethish Sukumar</h3>
+                <p class="team-role" style="color:#8b5cf6;">Chief Technology Officer</p>
+                <p class="team-qual">BE-CSE-Cyber Security</p>
+                <p class="team-desc">I believe great technology starts with trust — building systems people can rely on, teams that grow together, and solutions that actually make a difference.</p>
+            </div>
+            <!-- Chief Operating Officer -->
+            <div class="team-card anim-fade">
+                <div class="card-accent" style="background:#eab308;"></div>
+                <div class="team-avatar" style="border-color: rgba(234, 179, 8, 0.35);">
+                    <img src="./image/imp_Image/Chief%20operation%20officer.png" alt="Abhishek"
+                         onerror="this.src='https://ui-avatars.com/api/?name=Abhishek&background=eab308&color=fff&size=200'">
+                </div>
+                <h3 class="team-name">Abhishek</h3>
+                <p class="team-role" style="color:#eab308;">Chief Operating Officer</p>
+                <p class="team-qual">BE-CSE-Cyber Security</p>
+                <p class="team-desc">My focus is simple: build the systems and culture that let great ideas actually happen, every single day.</p>
             </div>
         </div>
     </div>
@@ -766,7 +800,7 @@
 
 <!-- ═══════════ JavaScript ═══════════ -->
 
-<script src="script.js"></script>
+<script defer src="script.js?v=2"></script>
 
 </body>
 </html>

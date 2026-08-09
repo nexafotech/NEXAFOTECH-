@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Alignment Calibration</title>
+    <style>
+        body { background: #111; color: #fff; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 2rem; }
+        .grid { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; }
+        .card { border: 1px solid #333; padding: 1rem; border-radius: 1rem; background: #1a1a1a; display: flex; flex-direction: column; align-items: center; }
+        .orb-preview {
+            width: 300px; height: 400px; 
+            border: 2px dashed #ff5123; border-radius: 200px 200px 0 0;
+            position: relative; overflow: hidden; margin-bottom: 1rem;
+            background: linear-gradient(180deg, rgba(255,81,35,0.1) 0%, rgba(0,0,0,0) 100%);
+        }
+        .orb-preview img {
+            position: absolute; bottom: 0; left: 0;
+            width: 100%; height: 100%; object-fit: contain; object-position: bottom center;
+            transform-origin: bottom center;
+        }
+        .controls { display: flex; flex-direction: column; width: 100%; gap: 0.5rem; }
+        .controls label { font-size: 0.8rem; display: flex; justify-content: space-between; }
+        input[type=range] { width: 100%; }
+        button { margin-top: 2rem; padding: 1rem 2rem; background: #ff5123; color: #fff; border: none; border-radius: 0.5rem; cursor: pointer; font-weight: bold; }
+        #output { margin-top: 1rem; width: 80%; height: 150px; background: #000; color: #0f0; padding: 1rem; font-family: monospace; border-radius: 0.5rem; }
+    </style>
+</head>
+<body>
+
+    <h2>Align the Images (Drag sliders to match the CTO's framing)</h2>
+    <p>Adjust the sliders until the face looks perfectly centered in the dashed outline, then click "Generate CSS".</p>
+
+    <div class="grid" id="grid">
+        <!-- Will be populated by JS -->
+    </div>
+
+    <button onclick="generateCSS()">Generate CSS</button>
+    <textarea id="output" readonly></textarea>
+
+    <script>
+        const images = [
+            { id: 'img-founder', name: 'Founder', src: './image/imp_Image/Founder-Chairman.png' },
+            { id: 'img-ceo', name: 'CEO', src: './image/imp_Image/CEO-Secretary-2.png' },
+            { id: 'img-md', name: 'MD', src: './image/imp_Image/md.png' },
+            { id: 'img-cto', name: 'CTO (Reference)', src: './image/imp_Image/Chief%20Technology%20officer.png' },
+            { id: 'img-coo', name: 'COO', src: './image/imp_Image/Chief%20operation%20officer.png' }
+        ];
+
+        const grid = document.getElementById('grid');
+
+        images.forEach(img => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <h3>${img.name}</h3>
+                <div class="orb-preview">
+                    <img id="preview-${img.id}" src="${img.src}">
+                </div>
+                <div class="controls">
+                    <label>Translate Y: <span id="ty-val-${img.id}">0%</span></label>
+                    <input type="range" id="ty-${img.id}" min="-20" max="30" value="0" step="1" oninput="update('${img.id}')">
+                    <label>Scale: <span id="s-val-${img.id}">1.00</span></label>
+                    <input type="range" id="s-${img.id}" min="0.8" max="1.5" value="1" step="0.01" oninput="update('${img.id}')">
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        function update(id) {
+            const ty = document.getElementById('ty-' + id).value;
+            const s = document.getElementById('s-' + id).value;
+            document.getElementById('ty-val-' + id).innerText = ty + '%';
+            document.getElementById('s-val-' + id).innerText = s;
+            
+            document.getElementById('preview-' + id).style.transform = \`translateY(\${ty}%) scale(\${s})\`;
+        }
+
+        function generateCSS() {
+            let css = '/* Copy and paste this to the AI or styles.css */\n';
+            images.forEach(img => {
+                const ty = document.getElementById('ty-' + img.id).value;
+                const s = document.getElementById('s-' + img.id).value;
+                if(ty != 0 || s != 1) {
+                    css += \`#\${img.id} { transform: translateY(\${ty}%) scale(\${s}); transform-origin: bottom center; }\n\`;
+                }
+            });
+            document.getElementById('output').value = css;
+        }
+    </script>
+</body>
+</html>
