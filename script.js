@@ -16,9 +16,11 @@ function throttle(func, limit) {
 }
 
 // ── Navbar scroll effect ──
-window.addEventListener('scroll', throttle(() => {
-    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
-}, 100));
+ScrollTrigger.create({
+    start: 'top -50',
+    end: 99999,
+    toggleClass: {className: 'scrolled', targets: '#navbar'}
+});
 
 // ── Mouse Cursor Glow Tracker (desktop only) ──
 if (!isTouchDevice) {
@@ -33,17 +35,14 @@ if (!isTouchDevice) {
 
 // ── Parallax Scroll ──
 if (!isMobile) {
-    let ticking = false;
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                const scrollY = window.scrollY;
-                document.querySelectorAll('.glow-orb').forEach(orb => {
-                    orb.style.transform = `translate(-50%, calc(-50% + ${scrollY * 0.05}px))`;
-                });
-                ticking = false;
-            });
-            ticking = true;
+    gsap.to('.glow-orb', {
+        y: () => window.innerHeight * 0.5,
+        ease: 'none',
+        scrollTrigger: {
+            trigger: document.body,
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: 1
         }
     });
 }
@@ -77,8 +76,8 @@ gsap.config({ force3D: true });
 
 // ── GSAP Kinetic Typography (SplitType) ──
 // Split text for hero title
-const heroTitleSplit = new SplitType('.hero h1', { types: 'words, chars' });
-gsap.from(heroTitleSplit.chars, {
+const heroTitleSplit = new SplitType('.hero h1', { types: 'words' });
+gsap.from(heroTitleSplit.words, {
     duration: 1,
     y: 100,
     opacity: 0,
@@ -91,8 +90,8 @@ gsap.from(heroTitleSplit.chars, {
 // Split text for section titles
 const sectionTitles = document.querySelectorAll('.section-title');
 sectionTitles.forEach(title => {
-    const splitTitle = new SplitType(title, { types: 'words, chars' });
-    gsap.from(splitTitle.chars, {
+    const splitTitle = new SplitType(title, { types: 'words' });
+    gsap.from(splitTitle.words, {
         scrollTrigger: {
             trigger: title,
             start: "top 85%",
@@ -196,13 +195,16 @@ if (heroVisual) {
 }
 
 // ── Scroll Progress Bar ──
-window.addEventListener('scroll', throttle(() => {
-    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-    const progress = document.getElementById('scroll-progress');
-    if (progress) progress.style.width = scrolled + '%';
-}, 50));
+gsap.to('#scroll-progress', {
+    width: '100%',
+    ease: 'none',
+    scrollTrigger: {
+        trigger: document.body,
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 0.1
+    }
+});
 
 // ── Spotlight Effect for Services ──
 document.querySelectorAll('.svc-slice').forEach(slice => {
@@ -559,7 +561,7 @@ if (hamburger && navLinks) {
     let mouse = { x: -1000, y: -1000 };
     let particles = [];
     let animating = false;
-    const PARTICLE_COUNT = isMobile ? 30 : 80;
+    const PARTICLE_COUNT = isMobile ? 0 : 80;
     const CONNECT_DIST = isMobile ? 100 : 150;
     const MOUSE_DIST = 200;
 

@@ -190,10 +190,10 @@ img { max-width: 100%; display: block; }
     max-width: 100%; max-height: 100%; height: 100%; width: auto;
     object-fit: contain; object-position: bottom center;
     border-radius: 0; border: none; box-shadow: none; margin-bottom: 0;
-    filter: drop-shadow(0 30px 40px rgba(0,0,0,0.6));
+    /* filter drop shadow removed */
     transition: filter 0.3s;
 }
-.orb-slide.active img:hover { filter: drop-shadow(0 30px 40px var(--primary-glow)) contrast(1.1); }
+.orb-slide.active img:hover { transform: scale(1.02); }
 
 /* Image-specific alignment fixes removed as requested */
 
@@ -282,7 +282,7 @@ img { max-width: 100%; display: block; }
     margin-left: auto; margin-right: auto; font-size: 0.95rem; line-height: 1.6;
 }
 .glow-orb {
-    position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none;
+    position: absolute; border-radius: 50%;  pointer-events: none;
 }
 
 /* ───── Services Grid ───── */
@@ -460,7 +460,7 @@ img { max-width: 100%; display: block; }
 .bento-card:hover .cyber-mask-area { opacity: 1; }
 
 /* Fluid Gooey Effect */
-.gooey-stage { position: absolute; top: 0; left: 0; width: 100%; height: 100%; filter: url(#gooey); z-index: 1; pointer-events: none; overflow: hidden; }
+.gooey-stage { position: absolute; top: 0; left: 0; width: 100%; height: 100%; /* filter: url(#gooey); disabled for perf */ z-index: 1; pointer-events: none; overflow: hidden; }
 .goo-blob {
     position: absolute; width: 80px; height: 80px; background: var(--primary); border-radius: 50%;
     top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -477,7 +477,7 @@ img { max-width: 100%; display: block; }
 .bento-cursor {
     position: fixed; width: 24px; height: 24px; border: 2px solid #fff; border-radius: 50%;
     pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); opacity: 0;
-    transition: opacity 0.2s; mix-blend-mode: difference;
+    transition: opacity 0.2s; 
 }
 
 /* ───── Restored Old Cards CSS ───── */
@@ -547,7 +547,7 @@ img { max-width: 100%; display: block; }
 .bento-cursor {
     position: fixed; width: 24px; height: 24px; border: 2px solid #fff; border-radius: 50%;
     pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); opacity: 0;
-    transition: opacity 0.2s; mix-blend-mode: difference;
+    transition: opacity 0.2s; 
 }
 
 @media (max-width: 900px) {
@@ -1047,7 +1047,7 @@ img { max-width: 100%; display: block; }
 .svc-slice::before {
     content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity 0.3s;
     background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.1), transparent 40%);
-    pointer-events: none; z-index: 5; mix-blend-mode: overlay;
+    pointer-events: none; z-index: 5; 
 }
 .svc-slice:hover::before { opacity: 1; }
 
@@ -1309,7 +1309,7 @@ img { max-width: 100%; display: block; }
     /* Fix gooey SVG filter bug on mobile */
     .gooey-stage { 
         transform: none; opacity: 1; 
-        -webkit-filter: url(#gooey); filter: url(#gooey); 
+        -webkit-/* filter: url(#gooey); disabled for perf */ /* filter: url(#gooey); disabled for perf */ 
     }
     .goo-blob { 
         width: 60px; height: 60px; 
