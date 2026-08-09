@@ -476,7 +476,18 @@ if (!isTouchDevice) {
                 
                 if(iteration >= originalText.length){ 
                     clearInterval(interval);
-                    el.innerHTML = originalText.replace('TECH', '<span class="accent">TECH</span>'); 
+                    el.textContent = '';
+                    const parts = originalText.split('TECH');
+                    if (parts.length > 1) {
+                        el.appendChild(document.createTextNode(parts[0]));
+                        const span = document.createElement('span');
+                        span.className = 'accent';
+                        span.textContent = 'TECH';
+                        el.appendChild(span);
+                        if (parts[1]) el.appendChild(document.createTextNode(parts[1]));
+                    } else {
+                        el.textContent = originalText;
+                    }
                     el.dataset.scrambling = "false";
                 }
                 iteration += 1 / 2; 
@@ -545,6 +556,7 @@ if (hamburger && navLinks) {
     const section = document.getElementById('contact');
     let mouse = { x: -1000, y: -1000 };
     let particles = [];
+    let animating = false;
     const PARTICLE_COUNT = isMobile ? 30 : 80;
     const CONNECT_DIST = isMobile ? 100 : 150;
     const MOUSE_DIST = 200;
@@ -634,12 +646,16 @@ if (hamburger && navLinks) {
             }
         }
 
-        requestAnimationFrame(animate);
+        if (animating) requestAnimationFrame(animate);
     }
     
     // Only animate when section is visible
     const canvasObserver = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) { resize(); animate(); canvasObserver.disconnect(); }
+        if (entries[0].isIntersecting) {
+            if (!animating) { animating = true; resize(); animate(); }
+        } else {
+            animating = false;
+        }
     }, { threshold: 0.1 });
     canvasObserver.observe(section);
 })();
@@ -751,11 +767,27 @@ document.querySelectorAll('.svc-slice').forEach(slice => {
         svcHeadline.innerText = data.headline;
         svcDesc.innerText = data.desc;
         
-        svcGetList.innerHTML = data.whatYouGet.map(item => `<li>${item}</li>`).join('');
-        svcWorkList.innerHTML = data.howWeWork.map((step, idx) => {
-            return `<div class="sm-step" style="animation-delay: ${idx * 0.4}s">${step}</div>` + 
-                   (idx < data.howWeWork.length - 1 ? `<div class="sm-arrow" style="animation-delay: ${idx * 0.4}s">→</div>` : ``);
-        }).join('');
+        svcGetList.textContent = '';
+        data.whatYouGet.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            svcGetList.appendChild(li);
+        });
+        svcWorkList.textContent = '';
+        data.howWeWork.forEach((step, idx) => {
+            const div = document.createElement('div');
+            div.className = 'sm-step';
+            div.style.animationDelay = (idx * 0.4) + 's';
+            div.textContent = step;
+            svcWorkList.appendChild(div);
+            if (idx < data.howWeWork.length - 1) {
+                const arrow = document.createElement('div');
+                arrow.className = 'sm-arrow';
+                arrow.style.animationDelay = (idx * 0.4) + 's';
+                arrow.textContent = '→';
+                svcWorkList.appendChild(arrow);
+            }
+        });
         
         // Show Modal
         modal.classList.add('active');
@@ -800,3 +832,13 @@ if (isTouchDevice) {
         });
     });
 }
+
+// ── Image Fallback Handler (replaces inline onerror) ──
+document.querySelectorAll('img[data-fallback]').forEach(img => {
+    img.addEventListener('error', function() {
+        if (!this.dataset.failed) {
+            this.dataset.failed = 'true';
+            this.src = this.dataset.fallback;
+        }
+    }, { once: true });
+});
