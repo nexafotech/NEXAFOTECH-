@@ -405,7 +405,7 @@ img { max-width: 100%; display: block; }
 /* ───── UI/UX Bento Grid (UX Labs) ───── */
 #ux-experience { padding: 5rem 0; background: #000; }
 .bento-container {
-    max-width: 1200px; margin: 0 auto;
+    max-width: 1600px; margin: 0 auto;
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
     padding: 0 2rem;
 }
@@ -586,7 +586,7 @@ img { max-width: 100%; display: block; }
 
 /* ───── How It Works (Split Arched UI) ───── */
 #how-it-works { background: #0a0a0a; border-top: 1px solid rgba(255,255,255,0.04); overflow: hidden; }
-.hiw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 3rem auto 0; }
+.hiw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1600px; margin: 3rem auto 0; }
 
 /* Left Side: Arched Image */
 .hiw-arch-container { position: relative; width: 100%; padding-bottom: 2rem; }
@@ -655,12 +655,12 @@ img { max-width: 100%; display: block; }
 #leadership { background: #050505; }
 .team-grid {
     display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
-    max-width: 1200px; padding: 0 1.5rem 1rem; margin: 0 auto;
+    max-width: 1600px; padding: 0 1.5rem 1rem; margin: 0 auto;
 }
 /* .team-grid::-webkit-scrollbar { height: 8px; } */
 /* .team-grid::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; } */
 .team-card {
-    flex: 1 1 260px; max-width: 300px;
+    flex: 1 1 220px; max-width: 320px;
     background: var(--bg-card); border: 1px solid var(--border-card);
     border-radius: 1.3rem; padding: 2.5rem 1.5rem; text-align: center;
     position: relative; overflow: hidden; transition: all 0.4s ease;
