@@ -33,12 +33,19 @@ if (!isTouchDevice) {
 
 // ── Parallax Scroll ──
 if (!isMobile) {
-    window.addEventListener('scroll', throttle(() => {
-        const scrollY = window.scrollY;
-        document.querySelectorAll('.glow-orb').forEach(orb => {
-            orb.style.transform = `translate(-50%, calc(-50% + ${scrollY * 0.05}px))`;
-        });
-    }, 50));
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const scrollY = window.scrollY;
+                document.querySelectorAll('.glow-orb').forEach(orb => {
+                    orb.style.transform = `translate(-50%, calc(-50% + ${scrollY * 0.05}px))`;
+                });
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
 }
 
 // ── Lenis Smooth Scroll (desktop only) ──
@@ -153,7 +160,7 @@ gsap.to('.orb-container', {
         trigger: '.hero',
         start: "top top",
         end: "bottom top",
-        scrub: true
+        scrub: 1
     },
     scale: 0.5,
     opacity: 0.2,
@@ -171,7 +178,7 @@ mm.add("(min-width: 769px)", () => {
                     trigger: slice,
                     start: "top bottom",
                     end: "bottom top",
-                    scrub: true
+                    scrub: 1
                 },
                 y: -100, // Move image up slightly as we scroll down
                 ease: "none"
