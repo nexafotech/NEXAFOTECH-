@@ -1576,3 +1576,23 @@ img { max-width: 100%; display: block; }
 .anim-fade, .reveal, .team-card, .faq-item, .svc-slice, .hero-content, .hero h1 .word, .hero h1 .chars, .hero-visual, .orb-container, .orb-slide {
     will-change: transform, opacity;
 }
+
+@media (max-width: 768px) {
+
+    .team-grid {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        justify-content: flex-start;
+        padding-bottom: 1.5rem; /* Space for scrollbar */
+    }
+    .team-grid::-webkit-scrollbar { height: 6px; }
+    .team-grid::-webkit-scrollbar-thumb { background: rgba(255,81,35,0.5); border-radius: 4px; }
+    .team-card {
+        flex: 0 0 85%; /* Allow peeking of next card */
+        scroll-snap-align: center;
+        max-width: none;
+    }
+
+}
