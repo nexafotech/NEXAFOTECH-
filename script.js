@@ -430,25 +430,23 @@ if (!isTouchDevice) {
 }
 
 // ── Hero entrance animation ──
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        const hc = document.getElementById('heroContent');
-        const hv = document.getElementById('heroVisual');
-        if (hc) { hc.style.transition = 'all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94)'; hc.style.opacity = '1'; hc.style.transform = 'translateY(0)'; }
-        if (hv) { hv.style.transition = 'all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s'; hv.style.opacity = '1'; hv.style.transform = 'translateX(0)'; }
-    }, 100);
-    
-    // Orb image slider animation
-    const slides = document.querySelectorAll('.orb-slide');
-    if (slides.length > 0) {
-        let currentSlide = 0;
-        setInterval(() => {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }, 4000); // 3 seconds per image + 1 second transition
-    }
-});
+setTimeout(() => {
+    const hc = document.getElementById('heroContent');
+    const hv = document.getElementById('heroVisual');
+    if (hc) { hc.style.transition = 'all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94)'; hc.style.opacity = '1'; hc.style.transform = 'translateY(0)'; }
+    if (hv) { hv.style.transition = 'all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s'; hv.style.opacity = '1'; hv.style.transform = 'translateX(0)'; }
+}, 100);
+
+// Orb image slider animation
+const slides = document.querySelectorAll('.orb-slide');
+if (slides.length > 0) {
+    let currentSlide = 0;
+    setInterval(() => {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }, 4000); // 3 seconds per image + 1 second transition
+}
 
 // ── High-Tech Text Scramble (Decoder Effect) ──
 if (!isTouchDevice) {

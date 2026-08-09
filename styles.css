@@ -89,7 +89,11 @@ img { max-width: 100%; display: block; }
     display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
     position: relative; z-index: 2;
 }
-.hero-content { opacity: 0; transform: translateY(40px); }
+@keyframes heroFadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.hero-content { animation: heroFadeIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
 .hero-eyebrow {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 6px 16px; border-radius: 9999px;
@@ -128,7 +132,8 @@ img { max-width: 100%; display: block; }
 .hero-cta svg { transition: transform 0.3s; }
 .hero-cta:hover svg { transform: translate(4px, -4px); }
 .hero-visual {
-    position: relative; opacity: 0; transform: translateX(40px);
+    position: relative; animation: heroFadeIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s forwards;
+    opacity: 0; transform: translateX(40px);
     display: flex; align-items: center; justify-content: center;
     min-height: 500px; width: 100%;
 }
