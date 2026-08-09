@@ -73,6 +73,8 @@ if (!isTouchDevice) {
     gsap.ticker.lagSmoothing(0, 0);
 }
 
+gsap.config({ force3D: true });
+
 // ── GSAP Kinetic Typography (SplitType) ──
 // Split text for hero title
 const heroTitleSplit = new SplitType('.hero h1', { types: 'words, chars' });
