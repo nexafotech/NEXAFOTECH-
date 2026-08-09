@@ -654,13 +654,13 @@ img { max-width: 100%; display: block; }
 /* ───── Leadership ───── */
 #leadership { background: #050505; }
 .team-grid {
-    display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
-    max-width: 1600px; padding: 0 1.5rem 1rem; margin: 0 auto;
+    display: flex; justify-content: center; gap: 1.5rem; flex-wrap: nowrap;
+    width: 100%; max-width: 1600px; padding: 0 1.5rem 1rem; margin: 0 auto;
 }
 /* .team-grid::-webkit-scrollbar { height: 8px; } */
 /* .team-grid::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; } */
 .team-card {
-    flex: 1 1 220px; max-width: 320px;
+    flex: 1 1 0; min-width: 0; max-width: 320px;
     background: var(--bg-card); border: 1px solid var(--border-card);
     border-radius: 1.3rem; padding: 2.5rem 1.5rem; text-align: center;
     position: relative; overflow: hidden; transition: all 0.4s ease;
