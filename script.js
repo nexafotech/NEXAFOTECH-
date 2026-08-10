@@ -47,62 +47,37 @@ if (!isMobile) {
     });
 }
 
-// ── Lenis Smooth Scroll (desktop only) ──
-let lenis;
-if (!isTouchDevice) {
-    lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
-        direction: 'vertical',
-        gestureDirection: 'vertical',
-        smooth: true,
-        mouseMultiplier: 1,
-        smoothTouch: false,
-        touchMultiplier: 2,
-        infinite: false,
-    });
-
-    // Update ScrollTrigger whenever Lenis scrolls
-    lenis.on('scroll', ScrollTrigger.update);
-
-    // Sync GSAP ticker with Lenis requestAnimationFrame
-    gsap.ticker.add((time)=>{
-      lenis.raf(time * 1000);
-    });
-    gsap.ticker.lagSmoothing(0, 0);
-}
-
 gsap.config({ force3D: true });
 
 // ── GSAP Kinetic Typography (SplitType) ──
 // Split text for hero title
-const heroTitleSplit = new SplitType('.hero h1', { types: 'words' });
-gsap.from(heroTitleSplit.words, {
+
+// Simple hero animation without SplitType
+gsap.from('.hero h1', {
     duration: 1,
-    y: 100,
+    y: 50,
     opacity: 0,
-    rotationX: -90,
-    stagger: 0.05,
-    ease: "back.out(1.7)",
+    ease: "back.out(1.5)",
     delay: 0.2
 });
 
-// Split text for section titles
+
+
+// Simple section title animation
 const sectionTitles = document.querySelectorAll('.section-title');
 sectionTitles.forEach(title => {
-    const splitTitle = new SplitType(title, { types: 'words' });
-    gsap.from(splitTitle.words, {
+    gsap.from(title, {
         scrollTrigger: {
             trigger: title,
             start: "top 90%",
         },
-        duration: 0.5,
-        y: 50,
+        duration: 0.6,
+        y: 30,
         opacity: 0,
-        rotationX: -90,
-        stagger: 0.015,
-        ease: "back.out(1.2)"
+        ease: "power2.out"
     });
+});
+
 });
 
 // ── GSAP Staggered Reveals ──
@@ -547,118 +522,6 @@ if (hamburger && navLinks) {
         }
     });
 }
-
-// ═══════════ CONTACT — NEURAL NETWORK CANVAS ═══════════
-(function() {
-    const canvas = document.getElementById('contactCanvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const section = document.getElementById('contact');
-    let mouse = { x: -1000, y: -1000 };
-    let particles = [];
-    let animating = false;
-    const PARTICLE_COUNT = isMobile ? 0 : 80;
-    const CONNECT_DIST = isMobile ? 100 : 150;
-    const MOUSE_DIST = 200;
-
-    function resize() {
-        const rect = section.getBoundingClientRect();
-        canvas.width = rect.width;
-        canvas.height = rect.height;
-    }
-    window.addEventListener('resize', resize);
-    resize();
-
-    // Track mouse relative to section
-    section.addEventListener('mousemove', (e) => {
-        const rect = section.getBoundingClientRect();
-        mouse.x = e.clientX - rect.left;
-        mouse.y = e.clientY - rect.top;
-    });
-    section.addEventListener('mouseleave', () => { mouse.x = -1000; mouse.y = -1000; });
-
-    // Create particles
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-        particles.push({
-            x: Math.random() * (canvas.width || 1400),
-            y: Math.random() * (canvas.height || 700),
-            vx: (Math.random() - 0.5) * 0.5,
-            vy: (Math.random() - 0.5) * 0.5,
-            r: Math.random() * 2 + 1,
-            color: Math.random() > 0.7 ? 'rgba(255,81,35,' : 'rgba(255,255,255,'
-        });
-    }
-
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Update and draw particles
-        particles.forEach(p => {
-            p.x += p.vx;
-            p.y += p.vy;
-            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-            // Mouse attraction
-            const dx = mouse.x - p.x;
-            const dy = mouse.y - p.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < MOUSE_DIST) {
-                p.vx += dx * 0.0003;
-                p.vy += dy * 0.0003;
-            }
-
-            // Draw particle
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fillStyle = p.color + (0.4 + (dist < MOUSE_DIST ? 0.4 : 0)) + ')';
-            ctx.fill();
-        });
-
-        // Draw connections
-        for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < CONNECT_DIST) {
-                    ctx.beginPath();
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    const alpha = (1 - dist / CONNECT_DIST) * 0.15;
-                    ctx.strokeStyle = 'rgba(255,81,35,' + alpha + ')';
-                    ctx.lineWidth = 0.5;
-                    ctx.stroke();
-                }
-            }
-            // Connect to mouse
-            const mdx = particles[i].x - mouse.x;
-            const mdy = particles[i].y - mouse.y;
-            const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
-            if (mdist < MOUSE_DIST) {
-                ctx.beginPath();
-                ctx.moveTo(particles[i].x, particles[i].y);
-                ctx.lineTo(mouse.x, mouse.y);
-                const alpha = (1 - mdist / MOUSE_DIST) * 0.3;
-                ctx.strokeStyle = 'rgba(255,81,35,' + alpha + ')';
-                ctx.lineWidth = 1;
-                ctx.stroke();
-            }
-        }
-
-        if (animating) requestAnimationFrame(animate);
-    }
-    
-    // Only animate when section is visible
-    const canvasObserver = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-            if (!animating) { animating = true; resize(); animate(); }
-        } else {
-            animating = false;
-        }
-    }, { threshold: 0.1 });
-    canvasObserver.observe(section);
-})();
 
 // ═══════════ 3D HOLOGRAPHIC CARD TILT ═══════════
 if (!isTouchDevice) {

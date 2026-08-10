@@ -1,7 +1,7 @@
 /* ───── Reset & Base ───── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-padding-top: 80px; } /* Removed smooth scrolling, handled by Lenis */
-body {
+body { overflow-x: hidden; 
     font-family: 'Inter', sans-serif;
     background: #050505;
     color: #e0e0e0;
@@ -694,10 +694,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* Full-screen canvas for neural network */
-#contactCanvas {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    z-index: 0; pointer-events: none;
-}
+
 
 /* Morphing gradient blob */
 .contact-blob {
@@ -1572,10 +1569,7 @@ img { max-width: 100%; display: block; }
     .bento-card:hover .cyber-mask-area { opacity: 0 !important; }
 }
 
-/* ── Hardware Acceleration for Animations ── */
-.anim-fade, .reveal, .team-card, .faq-item, .svc-slice, .hero-content, .hero h1 .word, .hero h1 .chars, .hero-visual, .orb-container, .orb-slide {
-    will-change: transform, opacity;
-}
+
 
 
 
