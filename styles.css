@@ -1206,16 +1206,17 @@ img { max-width: 100%; display: block; }
     .hero { min-height: auto; padding-top: 60px; padding-bottom: 1rem; }
     .hero-inner { 
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         grid-template-areas: 
-            "h1 visual"
-            "sub sub"
-            "cta cta";
-        text-align: left; 
-        gap: 0.5rem; padding: 1rem 0.5rem; align-items: center;
+            "h1"
+            "visual"
+            "sub"
+            "cta";
+        text-align: center; 
+        gap: 1.5rem; padding: 2rem 0.5rem 1rem; align-items: center;
     }
     .hero-content { display: contents; }
-    .hero h1 { grid-area: h1; font-size: clamp(1.5rem, 6vw, 2rem); white-space: normal; word-break: break-word; line-height: 1.15; text-align: center; }
+    .hero h1 { grid-area: h1; font-size: clamp(2rem, 8vw, 2.5rem); white-space: normal; word-break: normal; line-height: 1.2; text-align: center; margin-bottom: 0; }
     .hero-sub { grid-area: sub; margin: 1rem 0 0.5rem; font-size: 0.75rem; max-width: 100%; text-align: center; }
     .hero-content > div { grid-area: cta; justify-self: center; margin-top: 0.5rem !important; }
     .hero-cta { 
@@ -1476,7 +1477,7 @@ img { max-width: 100%; display: block; }
     .navbar-inner { padding: 0 0.75rem; }
     .logo-wrap img { height: 28px; }
     .logo-name { font-size: 1rem; }
-    .hero h1 { font-size: clamp(1.5rem, 6vw, 2rem); word-break: break-word; }
+    .hero h1 { font-size: clamp(2rem, 8vw, 2.5rem); word-break: normal; }
     .hero-sub { font-size: 0.8rem; }
     .hero-inner { padding: 1rem 0.5rem; }
     .orb-container { width: 200px; height: 200px; }
