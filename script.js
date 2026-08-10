@@ -697,3 +697,34 @@ document.querySelectorAll('img[data-fallback]').forEach(img => {
 
 window.addEventListener('load', () => { ScrollTrigger.refresh(); });
 
+
+
+// ── Neo-Brutalist Parallax Mouse Effect ──
+const heroSection = document.getElementById('home');
+const neoContainer = document.getElementById('neoContainer');
+
+if (heroSection && neoContainer && !isTouchDevice) {
+    heroSection.addEventListener('mousemove', (e) => {
+        const rect = heroSection.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        // Calculate percentages from center (-1 to 1)
+        const xPercent = (x / rect.width - 0.5) * 2;
+        const yPercent = (y / rect.height - 0.5) * 2;
+        
+        // Max rotation in degrees
+        const maxRotateX = 15;
+        const maxRotateY = 15;
+        
+        // Invert for natural parallax feel
+        const rotateX = -(yPercent * maxRotateX);
+        const rotateY = (xPercent * maxRotateY);
+        
+        neoContainer.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+    
+    heroSection.addEventListener('mouseleave', () => {
+        neoContainer.style.transform = `rotateX(0deg) rotateY(0deg)`;
+    });
+}
