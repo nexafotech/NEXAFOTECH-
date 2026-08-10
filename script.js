@@ -94,7 +94,7 @@ sectionTitles.forEach(title => {
     gsap.from(splitTitle.words, {
         scrollTrigger: {
             trigger: title,
-            start: "top 95%",
+            start: "top 90%",
         },
         duration: 0.5,
         y: 50,
@@ -107,25 +107,21 @@ sectionTitles.forEach(title => {
 
 // ── GSAP Staggered Reveals ──
 // Replace old .anim-fade with GSAP scroll triggers
-const sections = document.querySelectorAll('.section');
-sections.forEach(sec => {
-    const fadeElements = sec.querySelectorAll('.anim-fade, .reveal, .team-card, .faq-item, .svc-slice');
-    if (fadeElements.length > 0) {
-        gsap.fromTo(fadeElements, 
-            { opacity: 0, y: 50 },
-            {
-                scrollTrigger: {
-                    trigger: sec,
-                    start: "top 98%",
-                },
-                opacity: 1,
-                y: 0,
-                duration: 0.5,
-                stagger: 0.04,
-                ease: "power2.out"
-            }
-        );
-    }
+const fadeElements = document.querySelectorAll('.anim-fade, .reveal, .team-card, .faq-item, .svc-slice');
+fadeElements.forEach(el => {
+    gsap.fromTo(el, 
+        { opacity: 0, y: 30 },
+        {
+            scrollTrigger: {
+                trigger: el,
+                start: "top 90%", // Trigger when element itself enters viewport
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power2.out"
+        }
+    );
 });
 
 // ── Number Counter Animation (GSAP) ──
@@ -242,7 +238,7 @@ gsap.fromTo('.timeline-step',
     {
         scrollTrigger: {
             trigger: '.timeline',
-            start: "top 95%",
+            start: "top 90%",
             end: "bottom 60%",
             scrub: 1
         },
@@ -802,7 +798,7 @@ document.querySelectorAll('.svc-slice').forEach(slice => {
         window.modalScrollTrigger = ScrollTrigger.create({
             trigger: '#modalWorkList',
             scroller: '#serviceModal',
-            start: "top 95%",
+            start: "top 90%",
             onEnter: () => {
                 gsap.fromTo(modal.querySelectorAll('.sm-step, .sm-arrow'), 
                     { opacity: 0, y: 100, rotationX: 45 }, 
