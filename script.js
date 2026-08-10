@@ -63,39 +63,29 @@ gsap.from('.hero h1', {
 
 
 
-// Simple section title animation
-const sectionTitles = document.querySelectorAll('.section-title');
-sectionTitles.forEach(title => {
-    gsap.from(title, {
-        scrollTrigger: {
-            trigger: title,
-            start: "top 90%",
-        },
-        duration: 0.6,
-        y: 30,
-        opacity: 0,
-        ease: "power2.out"
-    });
-});
 
 
-// ── GSAP Staggered Reveals ──
-// Replace old .anim-fade with GSAP scroll triggers
-const fadeElements = document.querySelectorAll('.anim-fade, .reveal, .team-card, .faq-item, .svc-slice');
-fadeElements.forEach(el => {
-    gsap.fromTo(el, 
-        { opacity: 0, y: 30 },
-        {
-            scrollTrigger: {
-                trigger: el,
-                start: "top 90%", // Trigger when element itself enters viewport
-            },
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            ease: "power2.out"
+
+// ── Lightweight Native IntersectionObserver (Replaces GSAP for performance) ──
+const observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -10% 0px', // Triggers when element is 10% above the bottom of the viewport
+    threshold: 0
+};
+
+const scrollObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
         }
-    );
+    });
+}, observerOptions);
+
+const fadeElements = document.querySelectorAll('.section-title, .anim-fade, .reveal, .team-card, .faq-item, .svc-slice');
+fadeElements.forEach(el => {
+    el.classList.add('native-fade');
+    scrollObserver.observe(el);
 });
 
 // ── Number Counter Animation (GSAP) ──
