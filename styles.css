@@ -1184,7 +1184,7 @@ img { max-width: 100%; display: block; }
     .neo-monolith-wrapper { width: 200px; height: 280px; }
     .neo-monolith { box-shadow: 15px 15px 0px var(--primary); }
     .hero:hover .neo-monolith { box-shadow: 20px 20px 0px var(--primary); }
-    .neo-vertical-text { font-size: 0.9rem; letter-spacing: 0.2em; transform: rotate(90deg) translateY(-10px); }
+    
     .hero-slide-role { font-size: 0.55rem; right: -5px; bottom: 5px; padding: 0.4rem 0.8rem; }
 
     
@@ -1590,7 +1590,7 @@ img { max-width: 100%; display: block; }
     .neo-monolith-wrapper { width: 200px; height: 280px; }
     .neo-monolith { box-shadow: 15px 15px 0px var(--primary); }
     .hero:hover .neo-monolith { box-shadow: 20px 20px 0px var(--primary); }
-    .neo-vertical-text { font-size: 0.9rem; letter-spacing: 0.2em; transform: rotate(90deg) translateY(-10px); }
+    
     .hero-slide-role { font-size: 0.55rem; right: -5px; bottom: 5px; padding: 0.4rem 0.8rem; }
 
     
@@ -1694,17 +1694,7 @@ img { max-width: 100%; display: block; }
     box-shadow: 30px 30px 0px var(--primary);
 }
 
-.neo-vertical-text {
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.3em;
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.4);
-    transform: rotate(90deg) translateY(-20px);
-    transform-origin: right center;
-    white-space: nowrap;
-}
+
 
 .neo-foreground {
     position: absolute;
