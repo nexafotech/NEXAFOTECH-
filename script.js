@@ -416,7 +416,7 @@ if (slides.length > 0) {
         slides[currentSlide].classList.remove('active');
         currentSlide = (currentSlide + 1) % slides.length;
         slides[currentSlide].classList.add('active');
-    }, 4000); // 3 seconds per image + 1 second transition
+    }, 3000); // 3 seconds per image
 }
 
 // ── High-Tech Text Scramble (Decoder Effect) ──

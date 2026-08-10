@@ -1183,7 +1183,7 @@ img { max-width: 100%; display: block; }
     .neo-container { width: 250px; height: 300px; }
     .neo-monolith-wrapper { width: 200px; height: 280px; }
     .neo-monolith { box-shadow: 15px 15px 0px var(--primary); }
-    .hero:hover .neo-monolith { box-shadow: 20px 20px 0px var(--primary); }
+    .neo-container:hover .neo-monolith { box-shadow: 20px 20px 0px var(--primary); }
     
     .hero-slide-role { font-size: 0.55rem; right: -5px; bottom: 5px; padding: 0.4rem 0.8rem; }
 
@@ -1589,7 +1589,7 @@ img { max-width: 100%; display: block; }
     .neo-container { width: 250px; height: 300px; }
     .neo-monolith-wrapper { width: 200px; height: 280px; }
     .neo-monolith { box-shadow: 15px 15px 0px var(--primary); }
-    .hero:hover .neo-monolith { box-shadow: 20px 20px 0px var(--primary); }
+    .neo-container:hover .neo-monolith { box-shadow: 20px 20px 0px var(--primary); }
     
     .hero-slide-role { font-size: 0.55rem; right: -5px; bottom: 5px; padding: 0.4rem 0.8rem; }
 
@@ -1690,7 +1690,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* Hover effect for the Monolith */
-.hero:hover .neo-monolith {
+.neo-container:hover .neo-monolith {
     box-shadow: 30px 30px 0px var(--primary);
 }
 
@@ -1737,7 +1737,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* Hover effect for the Portrait */
-.hero:hover .hero-slide img {
+.neo-container:hover .hero-slide img {
     filter: grayscale(0%) drop-shadow(0 20px 40px rgba(0,0,0,1));
     transform: scale(1.05) translateY(-10px);
 }
@@ -1757,6 +1757,6 @@ img { max-width: 100%; display: block; }
     transition: transform 0.4s ease;
 }
 
-.hero:hover .hero-slide-role {
+.neo-container:hover .hero-slide-role {
     transform: translateY(-5px);
 }
