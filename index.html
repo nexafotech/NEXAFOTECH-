@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" as="style">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
     
     <!-- GSAP & Lenis Setup -->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha384-d+vyQ0dYcymoP8ndq2hW7FGC50nqGdXUEgoOUGxbbkAJwZqL7h+jKN0GGgn9hFDS" crossorigin="anonymous"></script>
@@ -19,7 +19,7 @@
     <script defer src="https://unpkg.com/split-type" integrity="sha384-wQImCCD/id1jPTwSloatzKlEpnEAQ5aH8H2Ud27FnNcJ1lf2+hB75ctoWnWxyD8X" crossorigin="anonymous"></script>
     <script defer src="https://unpkg.com/@studio-freight/lenis@1.0.32/dist/lenis.min.js" integrity="sha384-DNeW6upmQEIUlO/LHDW2ltyhVQ3tFgBjRYEB0Xy9AL9u+3TJ85W/nHQN1cajVj1O" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="styles.css?v=31">
+    <link rel="stylesheet" href="styles.css?v=32">
 
 </head>
 <body>
@@ -74,52 +74,32 @@
                 </a>
             </div>
         </div>
-        <div class="hero-visual" id="heroVisual">
-            <div class="orb-glow"></div>
-            <div class="orb-container">
-                <div class="orb-ring">
-                    <span class="orb-dot"></span>
-                    <span class="orb-dot"></span>
-                    <span class="orb-dot"></span>
-                    <span class="orb-dot"></span>
-                </div>
-                <div class="orb-ring-inner"></div>
-                <div class="orb">
-                    <div class="orb-shimmer"></div>
-                </div>
-                <div class="orb-slider" id="orbSlider">
-                    <div class="orb-slide active">
-                        <img id="img-founder" src="./image/imp_Image/Founder-Chairman.png" alt="Founder & Chairman"
-                             fetchpriority="high" decoding="async" data-fallback="https://ui-avatars.com/api/?name=Founder+Chairman&background=ff5123&color=fff&size=200">
-                        <div class="orb-slide-role">Founder & Chairman</div>
+                <div class="hero-visual" id="heroVisual">
+            <div class="square-frame-container">
+                <div class="bg-text-diagonal">CREATIVE LEADERS</div>
+                <div class="square-frame"></div>
+                <div class="hero-slider" id="heroSlider">
+                    <div class="hero-slide active">
+                        <img id="img-founder" src="./image/imp_Image/Founder-Chairman.png" alt="Founder & Chairman" fetchpriority="high" decoding="async">
+                        <div class="hero-slide-role">FOUNDER & CHAIRMAN</div>
                     </div>
-                    <div class="orb-slide">
-                        <img id="img-ceo" src="./image/imp_Image/CEO-Secretary-2.png" alt="Chief Executive Officer"
-                             loading="lazy" decoding="async" data-fallback="https://ui-avatars.com/api/?name=CEO+Secretary&background=0ea5e9&color=fff&size=200">
-                        <div class="orb-slide-role">Chief Executive Officer</div>
+                    <div class="hero-slide">
+                        <img id="img-ceo" src="./image/imp_Image/CEO-Secretary-2.png" alt="Chief Executive Officer" loading="lazy" decoding="async">
+                        <div class="hero-slide-role">CHIEF EXECUTIVE OFFICER</div>
                     </div>
-                    <div class="orb-slide">
-                        <img id="img-md" src="./image/imp_Image/md.png" alt="MD"
-                             loading="lazy" decoding="async" data-fallback="https://ui-avatars.com/api/?name=Managing+Director&background=10b981&color=fff&size=200">
-                        <div class="orb-slide-role">Managing Director</div>
+                    <div class="hero-slide">
+                        <img id="img-md" src="./image/imp_Image/md.png" alt="MD" loading="lazy" decoding="async">
+                        <div class="hero-slide-role">MANAGING DIRECTOR</div>
                     </div>
-                    <div class="orb-slide">
-                        <img id="img-cto" src="./image/imp_Image/Chief%20Technology%20officer.png" alt="Chief Technology Officer"
-                             loading="lazy" decoding="async" data-fallback="https://ui-avatars.com/api/?name=Chief+Technology+Officer&background=8b5cf6&color=fff&size=200">
-                        <div class="orb-slide-role">Chief Technology Officer</div>
+                    <div class="hero-slide">
+                        <img id="img-cto" src="./image/imp_Image/Chief%20Technology%20officer.png" alt="Chief Technology Officer" loading="lazy" decoding="async">
+                        <div class="hero-slide-role">CHIEF TECHNOLOGY OFFICER</div>
                     </div>
-                    <div class="orb-slide">
-                        <img id="img-coo" src="./image/imp_Image/Chief%20operation%20officer.png" alt="Chief Operating Officer"
-                             loading="lazy" decoding="async" data-fallback="https://ui-avatars.com/api/?name=Chief+Operating+Officer&background=eab308&color=fff&size=200">
-                        <div class="orb-slide-role">Chief Operating Officer</div>
+                    <div class="hero-slide">
+                        <img id="img-coo" src="./image/imp_Image/Chief%20operation%20officer.png" alt="Chief Operating Officer" loading="lazy" decoding="async">
+                        <div class="hero-slide-role">CHIEF OPERATING OFFICER</div>
                     </div>
                 </div>
-                <!-- Floating particles -->
-                <div class="orb-particle" style="width:6px;height:6px;top:20%;left:10%;animation-delay:0s;"></div>
-                <div class="orb-particle" style="width:4px;height:4px;top:70%;right:15%;animation-delay:0.8s;"></div>
-                <div class="orb-particle" style="width:8px;height:8px;bottom:15%;left:25%;animation-delay:1.5s;"></div>
-                <div class="orb-particle" style="width:5px;height:5px;top:30%;right:25%;animation-delay:2.2s;"></div>
-                <div class="orb-particle" style="width:6px;height:6px;bottom:30%;left:15%;animation-delay:0.5s;"></div>
             </div>
         </div>
     </div>
@@ -791,7 +771,7 @@
 
 <!-- ═══════════ JavaScript ═══════════ -->
 
-<script defer src="script.js?v=13"></script>
+<script defer src="script.js?v=14"></script>
 
 </body>
 </html>

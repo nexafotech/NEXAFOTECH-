@@ -409,7 +409,7 @@ setTimeout(() => {
 }, 100);
 
 // Orb image slider animation
-const slides = document.querySelectorAll('.orb-slide');
+const slides = document.querySelectorAll('.hero-slide');
 if (slides.length > 0) {
     let currentSlide = 0;
     setInterval(() => {
