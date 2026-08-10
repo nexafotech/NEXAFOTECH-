@@ -94,13 +94,13 @@ sectionTitles.forEach(title => {
     gsap.from(splitTitle.words, {
         scrollTrigger: {
             trigger: title,
-            start: "top 85%",
+            start: "top 95%",
         },
-        duration: 0.8,
+        duration: 0.5,
         y: 50,
         opacity: 0,
         rotationX: -90,
-        stagger: 0.03,
+        stagger: 0.015,
         ease: "back.out(1.2)"
     });
 });
@@ -116,13 +116,13 @@ sections.forEach(sec => {
             {
                 scrollTrigger: {
                     trigger: sec,
-                    start: "top 90%",
+                    start: "top 98%",
                 },
                 opacity: 1,
                 y: 0,
-                duration: 0.8,
-                stagger: 0.08,
-                ease: "power3.out"
+                duration: 0.5,
+                stagger: 0.04,
+                ease: "power2.out"
             }
         );
     }
@@ -242,7 +242,7 @@ gsap.fromTo('.timeline-step',
     {
         scrollTrigger: {
             trigger: '.timeline',
-            start: "top 85%",
+            start: "top 95%",
             end: "bottom 60%",
             scrub: 1
         },
@@ -802,11 +802,11 @@ document.querySelectorAll('.svc-slice').forEach(slice => {
         window.modalScrollTrigger = ScrollTrigger.create({
             trigger: '#modalWorkList',
             scroller: '#serviceModal',
-            start: "top 85%",
+            start: "top 95%",
             onEnter: () => {
                 gsap.fromTo(modal.querySelectorAll('.sm-step, .sm-arrow'), 
                     { opacity: 0, y: 100, rotationX: 45 }, 
-                    { opacity: 1, y: 0, rotationX: 0, duration: 0.8, stagger: 0.1, ease: "back.out(1.5)" }
+                    { opacity: 1, y: 0, rotationX: 0, duration: 0.5, stagger: 0.1, ease: "back.out(1.5)" }
                 );
             },
             once: true
