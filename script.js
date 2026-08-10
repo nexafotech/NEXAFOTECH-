@@ -78,6 +78,7 @@ sectionTitles.forEach(title => {
     });
 });
 
+
 // ── GSAP Staggered Reveals ──
 // Replace old .anim-fade with GSAP scroll triggers
 const fadeElements = document.querySelectorAll('.anim-fade, .reveal, .team-card, .faq-item, .svc-slice');
