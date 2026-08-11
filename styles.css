@@ -1749,12 +1749,12 @@ img { max-width: 100%; display: block; }
     transition: all 0.5s ease;
 }
 
-.magic-service-item:hover .svc-icon-circle {
+.magic-service-item:hover .svc-icon-circle,\n.magic-service-item.active .svc-icon-circle {
     background: var(--primary);
     border-color: var(--primary);
 }
 
-.magic-service-item:hover .svc-icon-circle svg {
+.magic-service-item:hover .svc-icon-circle svg,\n.magic-service-item.active .svc-icon-circle svg {
     stroke: #000;
 }
 
@@ -1786,7 +1786,7 @@ img { max-width: 100%; display: block; }
     transition: background-position 0.6s cubic-bezier(0.3, 1, 0.3, 1), -webkit-text-stroke 0.6s ease;
 }
 
-.magic-service-item:hover .magic-text {
+.magic-service-item:hover .magic-text,\n.magic-service-item.active .magic-text {
     /* Slide the black gradient up, revealing the image */
     background-position: 0 100%, center;
     -webkit-text-stroke: 1.5px rgba(255,255,255,0.1);

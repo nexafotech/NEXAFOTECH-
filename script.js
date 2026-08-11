@@ -728,3 +728,4 @@ if (heroSection && neoContainer && !isTouchDevice) {
         neoContainer.style.transform = `rotateX(0deg) rotateY(0deg)`;
     });
 }
+\n// Mobile touch support for Magic Services\ndocument.querySelectorAll(\'.magic-service-item\').forEach(item => {\n    item.addEventListener(\'click\', () => {\n        document.querySelectorAll(\'.magic-service-item\').forEach(other => {\n            if (other !== item) other.classList.remove(\'active\');\n        });\n        item.classList.toggle(\'active\');\n    });\n});\n
