@@ -426,6 +426,8 @@ img { max-width: 100%; display: block; }
     z-index: 1;
     overflow: hidden;
     border-radius: 12px;
+    pointer-events: auto;
+    cursor: none;
 }
 .goo-blob {
     position: absolute; width: 80px; height: 80px; background: var(--primary); border-radius: 50%;
@@ -442,17 +444,17 @@ img { max-width: 100%; display: block; }
 }
 .goo-cursor {
     position: absolute; width: 40px; height: 40px; background: #0ea5e9; border-radius: 50%;
-    pointer-events: none; top: var(--mouse-y, 50%); left: var(--mouse-x, 50%);
-    transform: translate(-50%, -50%); transition: top 0.08s linear, left 0.08s linear;
+    pointer-events: none;
+    left: var(--mouse-x, 50%);
+    top: var(--mouse-y, 50%);
+    transform: translate(-50%, -50%);
+    transition: left 0.06s linear, top 0.06s linear;
 }
 .bento-card:hover .goo-blob { width: 120px; height: 120px; }
 
 /* Custom local cursor for bento cards */
-.bento-cursor {
-    position: fixed; width: 24px; height: 24px; border: 2px solid #fff; border-radius: 50%;
-    pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); opacity: 0;
-    transition: opacity 0.2s; 
-}
+/* bento-cursor hidden — using in-card cursor instead */
+.bento-cursor { display: none !important; }
 
 /* ───── Restored Old Cards CSS ───── */
 /* Interactions Card */
@@ -518,11 +520,8 @@ img { max-width: 100%; display: block; }
 }
 .theme-switch input:checked + .slider-tg { background-color: var(--primary); }
 .theme-switch input:checked + .slider-tg:before { transform: translateX(26px); }
-.bento-cursor {
-    position: fixed; width: 24px; height: 24px; border: 2px solid #fff; border-radius: 50%;
-    pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); opacity: 0;
-    transition: opacity 0.2s; 
-}
+/* bento-cursor hidden — using in-card cursor instead */
+.bento-cursor { display: none !important; }
 
 @media (max-width: 900px) {
     .bento-container { grid-template-columns: 1fr; }

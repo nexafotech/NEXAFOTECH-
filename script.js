@@ -214,23 +214,7 @@ gsap.fromTo('.timeline-step',
 );
 
 // ── Bento Grid UI/UX Interactions ──
-// ═══════════ NEW UX BENTO INTERACTIONS ═══════════
-if (!isTouchDevice) {
-    const bentoCursor = document.getElementById('bentoCursor');
-    if (bentoCursor) {
-        document.querySelectorAll('.bento-card').forEach(card => {
-            card.addEventListener('mouseenter', () => bentoCursor.style.opacity = '1');
-            card.addEventListener('mouseleave', () => bentoCursor.style.opacity = '0');
-        });
-        
-        document.addEventListener('mousemove', (e) => {
-            if(bentoCursor.style.opacity === '1') {
-                bentoCursor.style.left = e.clientX + 'px';
-                bentoCursor.style.top = e.clientY + 'px';
-            }
-        });
-    }
-}
+// bento-cursor is hidden via CSS; gooey stage handles its own cursor
 
 // 1. Hacker Text
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
