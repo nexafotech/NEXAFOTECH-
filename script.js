@@ -669,21 +669,7 @@ if(modalClose) {
     });
 }
 
-// ── Mobile Service Accordion (tap to toggle) ──
-if (isTouchDevice) {
-    document.querySelectorAll('.magic-service-item').forEach(slice => {
-        slice.addEventListener('click', (e) => {
-            const wasActive = slice.classList.contains('mobile-active');
-            // Close all
-            document.querySelectorAll('.magic-service-item').forEach(s => s.classList.remove('mobile-active'));
-            // Toggle clicked
-            if (!wasActive) {
-                slice.classList.add('mobile-active');
-                e.stopPropagation(); // Prevent modal on first tap
-            }
-        });
-    });
-}
+// Mobile accordion removed — modal opens directly on tap
 
 // ── Image Fallback Handler (replaces inline onerror) ──
 document.querySelectorAll('img[data-fallback]').forEach(img => {
@@ -728,12 +714,4 @@ if (heroSection && neoContainer && !isTouchDevice) {
         neoContainer.style.transform = `rotateX(0deg) rotateY(0deg)`;
     });
 }
-// Mobile touch support for Magic Services
-document.querySelectorAll('.magic-service-item').forEach(item => {
-    item.addEventListener('click', () => {
-        document.querySelectorAll('.magic-service-item').forEach(other => {
-            if (other !== item) other.classList.remove('active');
-        });
-        item.classList.toggle('active');
-    });
-});
+// Duplicate mobile handler removed — modal handler at line 609 handles everything
