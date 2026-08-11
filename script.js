@@ -82,7 +82,7 @@ const scrollObserver = new IntersectionObserver((entries, observer) => {
     });
 }, observerOptions);
 
-const fadeElements = document.querySelectorAll('.section-title, .anim-fade, .reveal, .team-card, .faq-item, .svc-slice');
+const fadeElements = document.querySelectorAll('.section-title, .anim-fade, .reveal, .team-card, .faq-item, .magic-service-item');
 fadeElements.forEach(el => {
     el.classList.add('native-fade');
     scrollObserver.observe(el);
@@ -131,7 +131,7 @@ gsap.to('.orb-container', {
 // Services Image Parallax (Desktop Only)
 let mm = gsap.matchMedia();
 mm.add("(min-width: 769px)", () => {
-    gsap.utils.toArray('.svc-slice').forEach(slice => {
+    gsap.utils.toArray('.magic-service-item').forEach(slice => {
         const img = slice.querySelector('.svc-bg');
         if (img) {
             gsap.to(img, {
@@ -167,7 +167,7 @@ gsap.to('#scroll-progress', {
 });
 
 // ── Spotlight Effect for Services ──
-document.querySelectorAll('.svc-slice').forEach(slice => {
+document.querySelectorAll('.magic-service-item').forEach(slice => {
     slice.addEventListener('mousemove', (e) => {
         const rect = slice.getBoundingClientRect();
         const x = e.clientX - rect.left;
@@ -606,7 +606,7 @@ const svcDesc = document.getElementById('modalDesc');
 const svcGetList = document.getElementById('modalGetList');
 const svcWorkList = document.getElementById('modalWorkList');
 
-document.querySelectorAll('.svc-slice').forEach(slice => {
+document.querySelectorAll('.magic-service-item').forEach(slice => {
     slice.style.cursor = 'pointer';
     slice.addEventListener('click', () => {
         const svcId = slice.getAttribute('data-service');
@@ -671,11 +671,11 @@ if(modalClose) {
 
 // ── Mobile Service Accordion (tap to toggle) ──
 if (isTouchDevice) {
-    document.querySelectorAll('.svc-slice').forEach(slice => {
+    document.querySelectorAll('.magic-service-item').forEach(slice => {
         slice.addEventListener('click', (e) => {
             const wasActive = slice.classList.contains('mobile-active');
             // Close all
-            document.querySelectorAll('.svc-slice').forEach(s => s.classList.remove('mobile-active'));
+            document.querySelectorAll('.magic-service-item').forEach(s => s.classList.remove('mobile-active'));
             // Toggle clicked
             if (!wasActive) {
                 slice.classList.add('mobile-active');
