@@ -516,11 +516,12 @@ img { max-width: 100%; display: block; }
 #process { background: #050505; }
 .timeline {
     display: flex; justify-content: space-between; gap: 1rem; position: relative;
-    max-width: 1000px; margin: 0 auto; flex-wrap: wrap;
+    max-width: 1000px; margin: 0 auto; flex-wrap: wrap; align-items: flex-start;
 }
 .timeline::before {
-    content: ''; position: absolute; top: 32px; left: 40px; right: 40px; height: 2px;
+    content: ''; position: absolute; top: 31px; left: 8%; right: 8%; height: 2px;
     background: linear-gradient(90deg, rgba(255,81,35,0.3), rgba(14,165,233,0.3));
+    z-index: 1;
 }
 .timeline-step {
     flex: 1; min-width: 160px; text-align: center; position: relative; padding-top: 0;
