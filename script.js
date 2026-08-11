@@ -299,15 +299,24 @@ if (!isTouchDevice) {
     }
 }
 
-// 4. Fluid Gooey
-if (!isTouchDevice) {
-    const gooeyCard = document.getElementById('gooeyCard');
-    if(gooeyCard) {
-        gooeyCard.addEventListener('mousemove', (e) => {
-            const rect = gooeyCard.getBoundingClientRect();
-            gooeyCard.style.setProperty('--mouse-x', (e.clientX - rect.left) + 'px');
-            gooeyCard.style.setProperty('--mouse-y', (e.clientY - rect.top) + 'px');
+// 4. Fluid Gooey — works on both desktop and mobile
+const gooeyCard = document.getElementById('gooeyCard');
+if(gooeyCard) {
+    const gooeyStage = gooeyCard.querySelector('.gooey-stage');
+    if(gooeyStage) {
+        // Mouse tracking
+        gooeyStage.addEventListener('mousemove', (e) => {
+            const rect = gooeyStage.getBoundingClientRect();
+            gooeyStage.style.setProperty('--mouse-x', (e.clientX - rect.left) + 'px');
+            gooeyStage.style.setProperty('--mouse-y', (e.clientY - rect.top) + 'px');
         });
+        // Touch tracking
+        gooeyStage.addEventListener('touchmove', (e) => {
+            const touch = e.touches[0];
+            const rect = gooeyStage.getBoundingClientRect();
+            gooeyStage.style.setProperty('--mouse-x', (touch.clientX - rect.left) + 'px');
+            gooeyStage.style.setProperty('--mouse-y', (touch.clientY - rect.top) + 'px');
+        }, { passive: true });
     }
 }
 

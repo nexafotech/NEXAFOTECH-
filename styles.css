@@ -417,18 +417,34 @@ img { max-width: 100%; display: block; }
 .bento-card:hover .cyber-mask-area { opacity: 1; }
 
 /* Fluid Gooey Effect */
-.gooey-stage { position: absolute; top: 0; left: 0; width: 100%; height: 100%; /* filter: url(#gooey); disabled for perf */ z-index: 1; pointer-events: none; overflow: hidden; }
+.gooey-stage {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    filter: url(#gooey);
+    z-index: 1;
+    overflow: hidden;
+    border-radius: 12px;
+}
 .goo-blob {
     position: absolute; width: 80px; height: 80px; background: var(--primary); border-radius: 50%;
     top: 50%; left: 50%; transform: translate(-50%, -50%);
-    transition: width 0.3s, height 0.3s;
+    transition: width 0.4s ease, height 0.4s ease;
+    animation: gooBlobFloat 5s ease-in-out infinite alternate;
+}
+@keyframes gooBlobFloat {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    25% { transform: translate(-30%, -60%) scale(1.1); }
+    50% { transform: translate(-60%, -40%) scale(0.9); }
+    75% { transform: translate(-40%, -55%) scale(1.15); }
+    100% { transform: translate(-50%, -50%) scale(1); }
 }
 .goo-cursor {
     position: absolute; width: 40px; height: 40px; background: #0ea5e9; border-radius: 50%;
     pointer-events: none; top: var(--mouse-y, 50%); left: var(--mouse-x, 50%);
-    transform: translate(-50%, -50%); transition: top 0.05s, left 0.05s;
+    transform: translate(-50%, -50%); transition: top 0.08s linear, left 0.08s linear;
 }
-.bento-card:hover .goo-blob { width: 110px; height: 110px; }
+.bento-card:hover .goo-blob { width: 120px; height: 120px; }
 
 /* Custom local cursor for bento cards */
 .bento-cursor {
@@ -1260,10 +1276,10 @@ img { max-width: 100%; display: block; }
         50% { transform: scale(0.6) translate(20%, 0%) rotateY(5deg); } 
     }
     
-    /* Fix gooey SVG filter bug on mobile */
-    .gooey-stage { 
-        transform: none; opacity: 1; 
-        -webkit-/* filter: url(#gooey); disabled for perf */ /* filter: url(#gooey); disabled for perf */ 
+    /* Mobile gooey */
+    .gooey-stage {
+        filter: url(#gooey);
+        height: 160px;
     }
     .goo-blob { 
         width: 60px; height: 60px; 
