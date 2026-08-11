@@ -85,8 +85,8 @@ img { max-width: 100%; display: block; }
     background-size: 80px 80px;
 }
 .hero-inner {
-    max-width: 1280px; margin: 0 auto; padding: 4rem 1.5rem;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    max-width: 1280px; margin: 0 auto; padding: 4rem 2rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;
     position: relative; z-index: 2;
 }
 @keyframes heroFadeIn {
@@ -135,7 +135,8 @@ img { max-width: 100%; display: block; }
     position: relative; animation: heroFadeIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s forwards;
     opacity: 0; transform: translateX(40px);
     display: flex; align-items: center; justify-content: center;
-    min-height: 500px; width: 100%;
+    min-height: 450px; width: 100%;
+    overflow: visible;
 }
 
 /* ── 3D Sphere Orb ── */
@@ -1605,21 +1606,21 @@ img { max-width: 100%; display: block; }
 /* ═══════════ NEO-BRUTALIST MONOLITH VISUAL ═══════════ */
 .neo-container {
     position: relative;
-    width: 350px;
-    height: 400px;
+    width: 380px;
+    height: 440px;
     margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
     perspective: 1000px;
     transform-style: preserve-3d;
-    transition: transform 0.1s ease-out; /* Smooth parallax */
+    transition: transform 0.1s ease-out;
 }
 
 .neo-monolith-wrapper {
     position: absolute;
-    width: 280px;
-    height: 380px;
+    width: 300px;
+    height: 400px;
     z-index: 1;
     transform-style: preserve-3d;
 }
@@ -1698,7 +1699,7 @@ img { max-width: 100%; display: block; }
 
 .hero-slide-role {
     position: absolute;
-    bottom: -10px;
+    bottom: 15px;
     right: -20px;
     background: #000;
     color: #fff;
@@ -1709,6 +1710,7 @@ img { max-width: 100%; display: block; }
     letter-spacing: 2px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.8);
     transition: transform 0.4s ease;
+    white-space: nowrap;
 }
 
 .neo-container:hover .hero-slide-role {
